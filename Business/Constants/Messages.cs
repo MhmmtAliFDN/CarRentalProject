@@ -54,5 +54,8 @@ namespace Business.Constants
         public static string UserListed = "User listed successfully.";
         public static string UsersListed = "Users listed successfully.";
         public static string UserUpdated = "User updated successfully.";
+
+        public static string CarReturnError = "The car hasn't been returned, so it can't be rented.";
+        public static string CarImageLimitExceed = "A car can have up to 5 images.";
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Helpers;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -25,16 +26,22 @@ namespace Business.Concrete
 
         public IResult Add(CarImage carImage, IFormFile file)
         {
-            var addedFile = FileHelper.Add(file);
-            if (!addedFile.IsSuccess)
+            var checkResult = BusinessRules.Run(CheckIfCarImageLimitExceed(carImage.CarId));
+            if (checkResult != null)
             {
-                return new ErrorResult(addedFile.Message);
+                return checkResult;
             }
-            carImage.SetImagePath(addedFile.Message);
+
+            var result = FileHelper.Add(file);
+            if (!result.IsSuccess)
+            {
+                return result;
+            }
+            carImage.SetImagePath(result.Message);
 
 
             _carImageDal.Add(carImage);
-            return new SuccessResult($"{Messages.CarImageAdded} Image Path: {addedFile.Message}");
+            return new SuccessResult($"{Messages.CarImageAdded} Image Path: {result.Message}");
         }
 
         public IResult Delete(CarImage carImage)
@@ -81,6 +88,16 @@ namespace Business.Concrete
 
             _carImageDal.Update(carImage);
             return new SuccessResult(Messages.CarImageUpdated);
+        }
+
+        private IResult CheckIfCarImageLimitExceed(int carId)
+        {
+            var result = GetImagesByCarId(carId);
+            if (result.Data.Count >= 5)
+            {
+                return new ErrorResult(Messages.CarImageLimitExceed);
+            }
+            return new SuccessResult();
         }
     }
 }

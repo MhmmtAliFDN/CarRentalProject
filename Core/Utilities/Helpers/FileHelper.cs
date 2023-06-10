@@ -16,14 +16,14 @@ namespace Core.Utilities.Helpers
             var checkFileExist = CheckFileExist(file);
             if (!checkFileExist.IsSuccess)
             {
-                return new ErrorResult("The file can not exist or null.");
+                return checkFileExist;
             }
 
             var extension = Path.GetExtension(file.FileName);
             var checkFileTypeValid = CheckFileTypeValid(extension);
             if (!checkFileTypeValid.IsSuccess)
             {
-                return new ErrorResult("The media type of file does not supported.");
+                return checkFileTypeValid;
             }
 
             var newFileName = GetNewFileNameByGuid(file);
@@ -64,13 +64,13 @@ namespace Core.Utilities.Helpers
             var deletedImage = Delete(sourcePath);
             if (!deletedImage.IsSuccess)
             {
-                return new ErrorResult(deletedImage.Message);
+                return deletedImage;
             }
 
             var addedImage = Add(file);
             if (!addedImage.IsSuccess)
             {
-                return new ErrorResult(addedImage.Message);
+                return addedImage;
             }
 
             return new SuccessResult(addedImage.Message);
@@ -81,7 +81,7 @@ namespace Core.Utilities.Helpers
         {
             if (file.Length <= 0 || file == null)
             {
-                return new ErrorResult();
+                return new ErrorResult("The file can not exist or null.");
             }
             return new SuccessResult();
         }
@@ -91,7 +91,7 @@ namespace Core.Utilities.Helpers
             type = type.ToLower();
             if (type != ".png" && type != ".jpeg" && type != ".jpg")
             {
-                return new ErrorResult();
+                return new ErrorResult("The media type of file does not supported.");
             }
             return new SuccessResult();
         }
