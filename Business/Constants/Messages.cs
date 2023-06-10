@@ -29,6 +29,7 @@ namespace Business.Constants
         public static string CarImagesListed = "Car images listed successfully.";
         public static string CarImageUpdated = "Car image updated successfully.";
         public static string CarImagesListedByCarId = "Car images listed by car id successfully.";
+        public static string CarImageNotFound = "Car image not found.";
 
         public static string ColorAdded = "Color added successfully.";
         public static string ColorDeleted = "Color deleted successfully.";
