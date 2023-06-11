@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,5 +58,12 @@ namespace Business.Constants
 
         public static string CarReturnError = "The car hasn't been returned, so it can't be rented.";
         public static string CarImageLimitExceed = "A car can have up to 5 images.";
+
+        public static string UserRegistered = "User registered successfully.";
+        public static string UserNotFound = "User not found.";
+        public static string PasswordError = "Password is not true";
+        public static string SuccessfulLogin = "Successful login.";
+        public static string UserAlreadyExist = "User already exist.";
+        public static string AccessTokenCreated = "Access token created successfully.";
     }
 }
