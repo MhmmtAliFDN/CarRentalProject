@@ -1,11 +1,12 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs.Authorization;
 using FluentValidation;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class UserValidator : AbstractValidator<User>
+    public class UserForRegisterValidator : AbstractValidator<UserForRegisterDto>
     {
-        public UserValidator()
+        public UserForRegisterValidator()
         {
             RuleFor(u => u.FirstName).NotEmpty();
             RuleFor(u => u.FirstName).MaximumLength(50);

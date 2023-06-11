@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation.FluentValidation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Core.Utilities.Security.Hashing;
@@ -47,6 +49,7 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
 
+        [ValidationAspect(typeof(UserForRegisterValidator))]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;
