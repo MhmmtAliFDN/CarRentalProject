@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Aspects\Autofac\NewFolder\" />
+    <Folder Include="Aspects\Autofac\Transaction\" />
   </ItemGroup>
 
 </Project>
