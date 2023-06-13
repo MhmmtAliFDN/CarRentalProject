@@ -19,7 +19,7 @@ namespace Business.DependencyResolves.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<BrandManager>().As<IBrandService>();
             builder.RegisterType<CarManager>().As<ICarService>();
             builder.RegisterType<CarImageManager>().As<ICarImageService>();
             builder.RegisterType<ColorManager>().As<IColorService>();
