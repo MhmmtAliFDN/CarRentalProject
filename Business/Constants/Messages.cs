@@ -49,6 +49,7 @@ namespace Business.Constants
         public static string RentalListed = "Rental listed successfully.";
         public static string RentalsListed = "Rentals listed successfully.";
         public static string RentalUpdated = "Rental updated successfully.";
+        public static string AllRentalDetailsListed = "All rental details listed.";
 
         public static string UserAdded = "User added successfully.";
         public static string UserDeleted = "User deleted successfully.";

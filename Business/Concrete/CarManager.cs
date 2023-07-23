@@ -52,9 +52,9 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<CarDetailsDto>> GetCarDetails(int carId)
+        public IDataResult<List<CarDetailsDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(carId), Messages.CarDetailsListed);
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(), Messages.CarDetailsListed);
         }
 
         [CacheAspect]

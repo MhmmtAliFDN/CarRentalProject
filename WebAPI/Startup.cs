@@ -43,6 +43,8 @@ namespace WebAPI
             {
                 new CoreModule()
             });
+
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -51,6 +53,7 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

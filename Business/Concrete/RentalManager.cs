@@ -5,6 +5,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -43,6 +44,11 @@ namespace Business.Concrete
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalsListed);
+        }
+
+        public IDataResult<List<RentalDetailsDto>> GetAllRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailsDto>>(_rentalDal.GetAllRentalDetails(), Messages.AllRentalDetailsListed);
         }
 
         public IResult Update(Rental rental)
